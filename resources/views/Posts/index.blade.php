@@ -8,7 +8,10 @@
         <header>
             
         </header>
-        
+        @foreach ($posts as $post)
+    <h2>{{ $post->title }}</h2>
+    <p>{{ $post->body }}</p>
+        @endforeach
         <h1>blog name</h1>
         <p>sampletext</p>
         

@@ -3,28 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 //Modelsフォルダの下にModelsフォルダを作ってしまったようだ。
 use App\Models\Post;
-=======
-use App\Models\Models\Post;
->>>>>>> origin/master
 
-class PostController extends Controller
-{
+class PostController extends Controller{
+
     //
-<<<<<<< HEAD
     public function index()
         {
             //return $post->get();
-            return view('Posts.index');
+            $posts = $this->getPosts();
+            return view('Posts.index',$posts);
+        }
+    public function getPosts()
+        {
+            $posts = Post::all();
+            return compact('posts');
         }
 }
     
-=======
-    public function index(Post $post)
-        {
-            return $post->get();
-        }
-}
->>>>>>> origin/master
