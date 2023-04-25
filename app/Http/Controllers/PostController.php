@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\Post;
+//Modelsフォルダの下にModelsフォルダを作ってしまったようだ。
+use App\Models\Post;
 
-class PostController extends Controller
-{
+class PostController extends Controller{
+
     //
-    public function index(Post $post)
+    public function index()
         {
-            return $post->get();
+            //return $post->get();
+            $posts = $this->getPosts();
+            return view('Posts.index',$posts);
+        }
+    public function getPosts()
+        {
+            $posts = Post::latest('updated_at')->take(10)->get();
+            return compact('posts');
         }
 }
+    
