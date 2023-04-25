@@ -17,7 +17,7 @@ class PostController extends Controller{
         }
     public function getPosts()
         {
-            $posts = Post::all();
+            $posts = Post::latest('updated_at')->take(10)->get();
             return compact('posts');
         }
 }
