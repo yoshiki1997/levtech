@@ -7,8 +7,10 @@
     <body>
         @if($errors->any())
             <div id="alert alert_denger">
-                <ul>@foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
                 </ul>
             </div>        
         @endif
@@ -22,6 +24,7 @@
             <div>
             <label for="body">内容</label>
             <textarea rows="10" cols="50" id="body" name="body" >{{ old('body') }}</textarea>
+            <!--テキストエリアに元から内容という文字を言えれておきたかったが、エラー時の処理と同時にするのがむつかしそうなので後で調べる。-->
             </div>
             
             <input type="submit" value="投稿">
