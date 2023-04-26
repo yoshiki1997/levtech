@@ -16,6 +16,13 @@ class PostController extends Controller{
             $posts = Post::latest('updated_at')->paginate(5);
             return view('Posts.index',['posts' => $posts, 'sort' => $sort]);
         }
+    
+    public function show($id)
+        {   
+            $post = Post::find($id);
+            return view('Posts.show',['post' => $post]);    
+        }
+    
     /*public function getPosts()
         {
             $posts = Post::latest('updated_at')->take(10)->get();

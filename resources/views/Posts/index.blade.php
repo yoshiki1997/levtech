@@ -10,7 +10,8 @@
         </header>
             <p>{{ $posts->links() }}</p>
             @foreach ($posts as $post)
-                <h2>{{ $post->title }}</h2><p>{{ $post->body }}</p>
+                <a href="{{ route('posts.show', ['id' => $post->id]) }}"><h2>{{ $post->title }}</h2></a>
+                <p>{{ $post->body }}</p>
             @endforeach
         <footer>
         
