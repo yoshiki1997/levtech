@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request\PostRequest;
 use Illuminate\Http\Request;
 //Modelsフォルダの下にModelsフォルダを作ってしまったようだ。
 use App\Models\Post;
@@ -21,6 +22,18 @@ class PostController extends Controller{
         {   
             $post = Post::find($id);
             return view('Posts.show',['post' => $post]);    
+        }
+        
+    public function create(Request $request)
+        {
+            return view('Posts.create');
+        }
+    
+    public function store(PostRequest $requeset)
+        {
+            $inputs = $request::all();
+            $post = Post::create($inputs);
+            return redirect('/posts/'.$post->id);
         }
     
     /*public function getPosts()

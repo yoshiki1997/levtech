@@ -13,6 +13,7 @@
                 <a href="{{ route('posts.show', ['id' => $post->id]) }}"><h2>{{ $post->title }}</h2></a>
                 <p>{{ $post->body }}</p>
             @endforeach
+            <a href={{ route("posts.create") }}><button>記事作成</button></a>
         <footer>
         
         </footer>
