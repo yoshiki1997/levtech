@@ -22,6 +22,11 @@ class PostController extends Controller{
             $post = Post::find($id);
             return view('Posts.show',['post' => $post]);    
         }
+        
+    public function create(Request $request)
+        {
+            return view('Posts.create');
+        }
     
     /*public function getPosts()
         {
