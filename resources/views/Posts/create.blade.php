@@ -5,7 +5,7 @@
         <title>記事投稿</title>
     </head>
     <body>
-        <form action="" method="post">
+        <form action="{{ route('posts.store') }}" method="post">
             <div>
             <label for="title">タイトル</label>
             <input type="text" id="title" name="title" required minlength="1" maxlength="50" size="10" />

@@ -28,6 +28,13 @@ class PostController extends Controller{
             return view('Posts.create');
         }
     
+    public function store()
+        {
+            $inputs = \Request::all();
+            $post = Post::create($inputs);
+            return redirect('/posts/'.$post->id);
+        }
+    
     /*public function getPosts()
         {
             $posts = Post::latest('updated_at')->take(10)->get();
