@@ -24,8 +24,19 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'max:40',
-            'body' => 'max:4000'
+            'title' => 'required|max:40',
+            'body' => 'required|max:4000'
         ];
     }
+    
+    public function message()
+    {
+        return [
+            'title.required' => 'タイトルが入力されていません。',
+            'title.max:40' => '文字数は４０文字以内です。',
+            'body.required' => '内容がありません。',
+            'body.max:4000' => '文字数は４０００文字以内です。'
+        ];
+    }
+    
 }
