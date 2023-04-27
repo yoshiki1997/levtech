@@ -12,8 +12,9 @@
             @foreach ($posts as $post)
                 <a href="{{ route('posts.show', ['id' => $post->id]) }}"><h2>{{ $post->title }}</h2></a>
                 <p>{{ $post->body }}</p>
+                <a href="{{ route('posts.edit', ['id' => $post->id]) }}"><button>記事編集</button></a>
             @endforeach
-            <a href={{ route("posts.create") }}><button>記事作成</button></a>
+            <a href="{{ route('posts.create') }}"><button>記事作成</button></a>
         <footer>
         
         </footer>

@@ -36,6 +36,12 @@ class PostController extends Controller{
             return redirect('/posts/'.$post->id);
         }
     
+    public function edit($id)
+        {
+            $posts = Post::find($id);
+            return view('Posts.edit')->with(['post' => $posts]);
+        }
+    
     /*public function getPosts()
         {
             $posts = Post::latest('updated_at')->take(10)->get();
