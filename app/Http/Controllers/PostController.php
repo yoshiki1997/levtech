@@ -42,7 +42,7 @@ class PostController extends Controller{
             return view('Posts.edit')->with(['post' => $posts]);
         }
     
-    public function update(Request $request,$id)
+    public function update(PostRequest $request,$id)
         {
             $post = Post::find($id);
             $post->title = $request->input('title');
