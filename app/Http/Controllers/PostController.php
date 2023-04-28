@@ -70,6 +70,11 @@ class PostController extends Controller{
             return redirect('/posts/' . $post->id);
         }
     
+    public function delete(Post $post)
+        {
+            $post->delete();
+            return redirect('/');
+        }
     /*public function getPosts()
         {
             $posts = Post::latest('updated_at')->take(10)->get();
