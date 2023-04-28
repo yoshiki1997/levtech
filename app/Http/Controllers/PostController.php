@@ -10,46 +10,64 @@ use App\Models\Post;
 class PostController extends Controller{
 
     //
-    public function index(Request $request,Post $posts)
+    /*public function index(Request $request,Post $posts)
         {
             //return $post->get();
             $sort = $request->sort;
             $posts = Post::latest('updated_at')->paginate(5);
             return view('Posts.index',['posts' => $posts, 'sort' => $sort]);
-        }
-    
-    public function show($id)
+        }*/
+        
+   public function index(Post $post)
+        {
+         return view('Posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+         //getPaginateByLimit()はPost.phpで定義したメソッドです。
+        } 
+        
+        /**
+         * 特定IDのpostを表示する
+         *
+         * @params Object Post // 引数の$postはid=1のPostインスタンス
+         * @return Reposnse post view
+         */
+    public function show(Post $post)
         {   
-            $post = Post::find($id);
-            return view('Posts.show',['post' => $post]);    
+            return view('Posts.show')->with(['post' => $post]);    
         }
         
-    public function create(Request $request)
+    public function create()
         {
             return view('Posts.create');
         }
     
-    public function store(PostRequest $requeset)
+    public function store(PostRequest $request, Post $post)
         {
-            $inputs = $request::all();
-            $post = Post::create($inputs);
+            $inputs = $request['post'];
+            $post->fill($input)->save();
+            //ちなみにfill関数+save関数はcreate関数とほとんど同じなので、今回
+            //$post->create($input)と記載しても同じ挙動になります。
+            //$post = Post::create($inputs);
             return redirect('/posts/'.$post->id);
         }
     
-    public function edit($id)
+    public function edit(Post $post)
         {
-            $posts = Post::find($id);
-            return view('Posts.edit')->with(['post' => $posts]);
+            return view('posts/edit')->with(['post' => $post]);
         }
     
-    public function update(PostRequest $request,$id)
+    public function update(PostRequest $request,Post $post)
         {
-            $post = Post::find($id);
+            /*$post = Post::find($id);
             $post->title = $request->input('title');
             $post->body = $request->input('body');
             $post->save();
             
             return redirect()->route('posts.show', ['id' => $post->id]);
+            */
+            $input_post = $request['post'];
+            $post->fill($input_post)->save();
+    
+            return redirect('/posts/' . $post->id);
         }
     
     /*public function getPosts()

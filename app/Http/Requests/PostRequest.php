@@ -11,10 +11,7 @@ class PostRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
+    
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,8 +21,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:40',
-            'body' => 'required|max:4000'
+            'post.title' => 'required|String|max:100',
+            'post.body' => 'required|String|max:4000'
         ];
     }
     
