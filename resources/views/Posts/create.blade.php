@@ -32,6 +32,16 @@
             
             <input type="submit" value="store"/>
             
+            <div class="category">
+            
+            <h2>カテゴリー</h2>    
+            <select name="$posts[category_id]">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            </div>
+            
         </form>
         <div class="back">
             [<a href="/">戻る</a>]

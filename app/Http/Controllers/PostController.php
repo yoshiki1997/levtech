@@ -35,9 +35,9 @@ class PostController extends Controller{
             return view('Posts.show')->with(['post' => $post]);    
         }
         
-    public function create()
+    public function create(Category $category)
         {
-            return view('Posts.create');
+            return view('Posts.create')->with(['category' => $this->get()]);
         }
     
     public function store(PostRequest $request, Post $post)
