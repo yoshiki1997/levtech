@@ -14,8 +14,9 @@ class Category extends Model
         return $this->hasMany(Posts::class);
     }
     
-    public function getByCategory(int limit_count = 5)
+    public function getByCategory(int $limit_count = 5)
     {
         return $this->post()->with('category')->OrderBy('updated_at','DESC')->get();
     }
+    
 }
